@@ -1,0 +1,17 @@
+language: go
+
+sudo: false
+
+go:
+  - 1.7.3
+  - tip
+
+before_install:
+  - go get -v .
+
+matrix:
+  allow_failures:
+    - go: tip
+
+scripts:
+  - go test -v .
