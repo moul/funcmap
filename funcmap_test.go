@@ -53,3 +53,9 @@ func ExampleFuncMap_lower() {
 	tmpl.Execute(os.Stdout, nil)
 	// Output: Hello world !
 }
+
+func ExampleFuncMap_rev() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`Hello {{"woRld" | rev}} !`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: Hello dlRow !
+}

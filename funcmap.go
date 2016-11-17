@@ -25,6 +25,13 @@ var FuncMap = template.FuncMap{
 	"title": strings.Title,
 	"lower": strings.ToLower,
 	"upper": strings.ToUpper,
+	"rev": func(v interface{}) string {
+		runes := []rune(v.(string))
+		for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+			runes[i], runes[j] = runes[j], runes[i]
+		}
+		return string(runes)
+	},
 	"int": func(v interface{}) string {
 		a, err := strconv.Atoi(v.(string))
 		if err != nil {
