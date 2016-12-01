@@ -42,6 +42,12 @@ func ExampleFuncMap_title() {
 	// Output: Hello World !
 }
 
+func ExampleFuncMap_unexport() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`Hello {{"WORLD" | unexport}} !`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: Hello wORLD !
+}
+
 func ExampleFuncMap_upper() {
 	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`Hello {{"world" | upper}} !`)
 	tmpl.Execute(os.Stdout, nil)

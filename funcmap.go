@@ -23,6 +23,9 @@ var FuncMap = template.FuncMap{
 	"split": strings.Split,
 	"join":  strings.Join,
 	"title": strings.Title,
+	"unexport": func(v interface{}) string {
+		return fmt.Sprintf("%s%s", strings.ToLower(v.(string)[0:1]), v.(string)[1:])
+	},
 	"lower": strings.ToLower,
 	"upper": strings.ToUpper,
 	"rev": func(v interface{}) string {
