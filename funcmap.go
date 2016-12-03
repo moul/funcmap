@@ -17,6 +17,13 @@ var FuncMap = template.FuncMap{
 		a, _ := json.MarshalIndent(v, "", "  ")
 		return string(a)
 	},
+	"indent": func(s, prefix string) string {
+		lines := strings.Split(s, "\n")
+		for idx, line := range lines {
+			lines[idx] = prefix + line
+		}
+		return strings.Join(lines, "\n")
+	},
 	// yaml
 	// xml
 	// toml
@@ -26,8 +33,10 @@ var FuncMap = template.FuncMap{
 	"unexport": func(input string) string {
 		return fmt.Sprintf("%s%s", strings.ToLower(input[0:1]), input[1:])
 	},
-	"lower": strings.ToLower,
-	"upper": strings.ToUpper,
+	"add":       func(a, b int) int { return a + b },
+	"trimspace": strings.TrimSpace,
+	"lower":     strings.ToLower,
+	"upper":     strings.ToUpper,
 	"rev": func(v interface{}) string {
 		runes := []rune(v.(string))
 		for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {

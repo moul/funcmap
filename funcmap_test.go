@@ -65,3 +65,21 @@ func ExampleFuncMap_rev() {
 	tmpl.Execute(os.Stdout, nil)
 	// Output: Hello dlRow !
 }
+
+func ExampleFuncMap_indent() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`{{indent "Hello World!" ">>> "}}`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: >>> Hello World!
+}
+
+func ExampleFuncMap_trimspace() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`Hello {{"      World     " | trimspace}}!`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: Hello World!
+}
+
+func ExampleFuncMap_add() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`42 + 42 = {{add 42 42}}!`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: 42 + 42 = 84!
+}
