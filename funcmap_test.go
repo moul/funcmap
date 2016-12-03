@@ -77,3 +77,9 @@ func ExampleFuncMap_trimspace() {
 	tmpl.Execute(os.Stdout, nil)
 	// Output: Hello World!
 }
+
+func ExampleFuncMap_add() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`42 + 42 = {{add 42 42}}!`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: 42 + 42 = 84!
+}

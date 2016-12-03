@@ -33,6 +33,7 @@ var FuncMap = template.FuncMap{
 	"unexport": func(input string) string {
 		return fmt.Sprintf("%s%s", strings.ToLower(input[0:1]), input[1:])
 	},
+	"add":       func(a, b int) int { return a + b },
 	"trimspace": strings.TrimSpace,
 	"lower":     strings.ToLower,
 	"upper":     strings.ToUpper,
