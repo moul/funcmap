@@ -71,3 +71,9 @@ func ExampleFuncMap_indent() {
 	tmpl.Execute(os.Stdout, nil)
 	// Output: >>> Hello World!
 }
+
+func ExampleFuncMap_trimspace() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`Hello {{"      World     " | trimspace}}!`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: Hello World!
+}
