@@ -17,6 +17,13 @@ var FuncMap = template.FuncMap{
 		a, _ := json.MarshalIndent(v, "", "  ")
 		return string(a)
 	},
+	"indent": func(s, prefix string) string {
+		lines := strings.Split(s, "\n")
+		for idx, line := range lines {
+			lines[idx] = prefix + line
+		}
+		return strings.Join(lines, "\n")
+	},
 	// yaml
 	// xml
 	// toml

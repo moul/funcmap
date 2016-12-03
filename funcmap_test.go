@@ -65,3 +65,9 @@ func ExampleFuncMap_rev() {
 	tmpl.Execute(os.Stdout, nil)
 	// Output: Hello dlRow !
 }
+
+func ExampleFuncMap_indent() {
+	tmpl, _ := template.New("").Funcs(FuncMap).Parse(`{{indent "Hello World!" ">>> "}}`)
+	tmpl.Execute(os.Stdout, nil)
+	// Output: >>> Hello World!
+}
