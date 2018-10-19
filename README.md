@@ -1,4 +1,7 @@
 # funcmap
+
+[![GuardRails badge](https://badges.production.guardrails.io/moul/funcmap.svg)](https://www.guardrails.io)
+
 :neckbeard: funcmap for go text/template
 
 This repo extends the builtin helpers of Golang's [text/template](https://golang.org/pkg/text/template) library with new helpers.
